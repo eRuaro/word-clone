@@ -9,7 +9,26 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  return <>Put a game here!</>;
+  const [guess, setGuess] = React.useState('');
+
+  function handleGuessSubmit(event) {
+    event.preventDefault();
+    console.log("submitted: ", guess);
+    setGuess('');
+  }
+
+  function handleGuessChange(event) {
+    const guessChange = event.target.value;
+    setGuess(guessChange.toUpperCase());
+    console.log(guess);
+  }
+
+  return (
+    <form class="guess-input-wrapper" onSubmit={handleGuessSubmit}>
+      <label for="guess-input">Enter guess:</label>
+      <input id="guess-input" type="text" value={guess} onChange={handleGuessChange} />
+    </form>
+  )
 }
 
 export default Game;
