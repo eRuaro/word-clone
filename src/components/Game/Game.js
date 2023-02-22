@@ -8,12 +8,13 @@ const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
 console.info({ answer });
 
-function Game() {
+function Game({ handleNewGuess }) {
   const [guess, setGuess] = React.useState('');
 
   function handleGuessSubmit(event) {
     event.preventDefault();
     console.log("submitted: ", guess);
+    handleNewGuess(guess);
     setGuess('');
   }
 
